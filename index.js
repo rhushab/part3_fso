@@ -3,6 +3,7 @@ const app = express();
 app.use(express.json());
 const cors = require('cors');
 app.use(cors());
+app.use(express.static('build'));
 
 let notes = [
   {
@@ -71,6 +72,6 @@ app.post('/api/notes', (request, response) => {
   response.json(note);
 });
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT);
 console.log(`Server running on ${PORT}`);
