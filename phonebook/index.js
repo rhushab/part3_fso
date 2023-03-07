@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 var morgan = require('morgan');
+app.use(express.static('build'));
 morgan.token('body', (req, res) => JSON.stringify(req.body));
 app.use(
   morgan(
