@@ -9,6 +9,9 @@ app.use(
     ':method :url :status :response-time ms - :res[content-length] :body - :req[content-length]'
   )
 );
+const cors = require('cors');
+
+app.use(cors());
 const currentDate = new Date();
 //write code to log HTTP POST requests to the console
 let phonebook = [
