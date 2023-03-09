@@ -18,22 +18,22 @@ let phonebook = [
   {
     id: 1,
     name: 'Arto Hellas',
-    number: '040-123456',
+    ph: '040-123456',
   },
   {
     id: 2,
     name: 'Ada Lovelace',
-    number: '39-44-5323523',
+    ph: '39-44-5323523',
   },
   {
     id: 3,
     name: 'Dan Abramov',
-    number: '12-43-234345',
+    ph: '12-43-234345',
   },
   {
     id: 4,
     name: 'Mary Poppendieck',
-    number: '39-23-6423122',
+    ph: '39-23-6423122',
   },
 ];
 
@@ -81,9 +81,9 @@ app.post(`/api/persons`, (request, response) => {
       error: 'name missing',
     });
   }
-  if (!body.number) {
+  if (!body.ph) {
     return response.status(400).json({
-      error: 'number missing',
+      error: 'ph missing',
     });
   }
   if (phonebook.find((person) => person.name === body.name)) {
@@ -94,7 +94,7 @@ app.post(`/api/persons`, (request, response) => {
   const person = {
     id: generateId(),
     name: body.name,
-    number: body.number,
+    ph: body.ph,
   };
   phonebook = phonebook.concat(person);
   response.json(person);
