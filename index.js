@@ -49,9 +49,8 @@ app.get('/', (request, response) => {
 }); */
 
 app.get('/api/notes', (request, response) => {
-  Note.find({}).then((notes) => {
-    response.json(notes);
-  });
+  response.json(notes);
+  console.log('notes', notes);
 });
 const generateId = () => {
   const maxId = notes.length > 0 ? Math.max(...notes.map((n) => n.id)) : 0;
