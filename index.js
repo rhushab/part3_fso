@@ -4,7 +4,7 @@ app.use(express.json());
 const cors = require('cors');
 app.use(cors());
 app.use(express.static('build'));
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 
 // const url = `mongodb+srv://rhushabhbontapallee:${password}@cluster0.gtq4hc8.mongodb.net/noteApp?retryWrites=true&w=majority`;
 
@@ -29,24 +29,24 @@ let notes = [
   },
 ];
 
-const noteSchema = new mongoose.Schema({
+/* const noteSchema = new mongoose.Schema({
   content: String,
   important: Boolean,
-});
+}); 
 
 const Note = mongoose.model('Note', noteSchema);
-
+*/
 app.get('/', (request, response) => {
   response.send('<h3>Hello World!</h3>');
 });
 
-noteSchema.set('toJSON', {
+/* noteSchema.set('toJSON', {
   transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id.toString();
     delete returnedObject._id;
     delete returnedObject.__v;
   },
-});
+}); */
 
 app.get('/api/notes', (request, response) => {
   Note.find({}).then((notes) => {
