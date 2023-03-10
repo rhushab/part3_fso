@@ -50,7 +50,7 @@ app.get('/', (request, response) => {
 
 app.get('/api/notes', (request, response) => {
   response.json(notes);
-  console.log('notes', notes);
+  console.log(notes);
 });
 const generateId = () => {
   const maxId = notes.length > 0 ? Math.max(...notes.map((n) => n.id)) : 0;
@@ -72,7 +72,6 @@ app.get('/api/notes/:id', (request, response) => {
 app.delete('/api/notes/:id', (request, response) => {
   const id = Number(request.params.id);
   notes = notes.filter((note) => note.id !== id);
-
   response.status(204).end;
 });
 
